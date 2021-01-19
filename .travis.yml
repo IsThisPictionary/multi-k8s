@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker 
+
+before_install:
+  - docker build -t tantho/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true tantho/react-test npm test
+
+after_success:
+  - docker build -t tantho/multi-client ./client
+  - docker build -t tantho/multi-nginx ./nginx
+  - docker build -t tantho/multi-server ./server
+  - docker build -t tantho/multi-worker ./worker
+  #Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #Push these bad boys to docker hub
+  - docker push tantho/multi-client
+  - docker push tantho/multi-nginx
+  - docker push tantho/multi-server
+  - docker push tantho/multi-worker
