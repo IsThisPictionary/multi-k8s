@@ -9,14 +9,14 @@ script:
   - docker run -e CI=true tantho/react-test npm test
 
 after_success:
-  - docker build -t tantho/multi-client ./client
-  - docker build -t tantho/multi-nginx ./nginx
-  - docker build -t tantho/multi-server ./server
-  - docker build -t tantho/multi-worker ./worker
+  - docker build -t tranantho/multi-client ./client
+  - docker build -t tranantho/multi-nginx ./nginx
+  - docker build -t tranantho/multi-server ./server
+  - docker build -t tranantho/multi-worker ./worker
   #Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Push these bad boys to docker hub
-  - docker push tantho/multi-client
-  - docker push tantho/multi-nginx
-  - docker push tantho/multi-server
-  - docker push tantho/multi-worker
+  - docker push tranantho/multi-client
+  - docker push tranantho/multi-nginx
+  - docker push tranantho/multi-server
+  - docker push tranantho/multi-worker
