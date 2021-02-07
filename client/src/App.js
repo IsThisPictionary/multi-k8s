@@ -19,7 +19,7 @@ function App() {
           >
             Learn React
           </a>
-          <h>Fib calculator</h>
+          <h>Fib Calculator V2</h>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
         </header>
