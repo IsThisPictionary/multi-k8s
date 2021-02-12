@@ -12,6 +12,6 @@ docker push tranantho/multi-server:$SHA
 docker push tranantho/multi-worker:$SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/server-deployment server=tranantho/multi-server$SHA
-kubectl set image deployments/client-deployment client=tranantho/multi-client$SHA
-kubectl set image deployments/worker-deployment worker=tranantho/multi-worker$SHA
+kubectl set image deployments/server-deployment server=tranantho/multi-server:$SHA
+kubectl set image deployments/client-deployment client=tranantho/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=tranantho/multi-worker:$SHA
