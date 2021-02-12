@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: tranantho/multi-server
+          image: cygnetops/multi-server-pgfix-5-11
           ports:
             - containerPort: 5000
           env:
@@ -31,7 +31,7 @@ spec:
             - name: PGDATABASE
               value: postgres
             - name: PGPASSWORD
-              valueFrom: 
-                secretKeyRef: 
+              valueFrom:
+                secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD

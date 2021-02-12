@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: postgres-deployment
 spec:
   replicas: 1
@@ -19,17 +19,15 @@ spec:
       containers:
         - name: postgres
           image: postgres
-          ports: 
+          ports:
             - containerPort: 5432
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgressql/data
+              mountPath: /var/lib/postgresql/data
               subPath: postgres
           env:
             - name: POSTGRES_PASSWORD
-              valueFrom: 
+              valueFrom:
                 secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD
-          
-
